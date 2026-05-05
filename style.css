@@ -106,7 +106,8 @@ p {
   background: var(--card);
   border: 3px solid transparent; /* デフォルトは透明 */
   border-radius: 32px; /* 大きめの角丸 */
-  padding: 40px;
+  padding: 36px;
+  margin: 56px 0;
   box-shadow: var(--shadow);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
