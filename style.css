@@ -170,28 +170,24 @@ p {
 }
 
 
-/* 全てのリンクから下線を消す */
+/* 全てのリンクから下線を消し、色は親要素に合わせる */
 a {
   text-decoration: none;
-  color: inherit; /* 親要素の色を引き継ぐ */
+  color: inherit;
   transition: opacity 0.2s ease;
+  display: inline-block; /* 念のため */
 }
 
-/* カード内の見出しやテキストのリンクを個別に制御する場合 */
-.card h2 a, 
-.card p a,
-.section a {
+/* ホバー時も下線を出さない */
+a:hover, a:focus, a:active {
   text-decoration: none;
+  outline: none;
 }
 
-/* マウスを乗せた時（ホバー）の演出：下線ではなく「少し薄くなる」程度が今風です */
-a:hover {
-  opacity: 0.7;
-}
-
-/* もし「ボタン（cta）」だけに下線が出てしまっている場合 */
-.cta {
-  text-decoration: none !important;
+/* カード要素としてのaタグを確実に制御 */
+.card {
+  text-decoration: none;
+  display: block; /* カード全体をリンクにするため */
 }
 
 
