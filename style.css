@@ -106,10 +106,12 @@ p {
   background: var(--card);
   border: 3px solid transparent; /* デフォルトは透明 */
   border-radius: 32px; /* 大きめの角丸 */
-  padding: 36px;
-  margin: 56px 0;
+  padding: 60px 48px; /* 上下を60px、左右を48pxに広げる */
   box-shadow: var(--shadow);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
+
+   /* セクション同士の間に隙間を作るために追加 */
+  margin-bottom: 40px; 
 }
 
 /* ホバー時の動きを優しく */
@@ -192,6 +194,15 @@ a:hover, a:focus, a:active {
 }
 
 
+/* さらに見栄えを良くするためのヒント */
+
+.stack {
+  display: flex;
+  flex-direction: column;
+  gap: 48px; /* これだけでセクション間の隙間が一律で設定できます */
+}
+
+
 footer {
   text-align: center;
   margin-top: 80px;
@@ -199,3 +210,26 @@ footer {
   font-size: 0.95rem;
   border-top: 1px solid var(--border);
 }
+
+/* --- CSSの末尾などに追記 --- */
+
+/* main直下のsectionに間隔を持たせる */
+main > .section:last-of-type {
+  margin-bottom: 60px; /* 最後のセクションの下だけ少し広めに */
+}
+
+/* 「戻る」ボタンのデザイン調整 */
+.back {
+  display: inline-block;
+  margin-top: 20px;
+  padding: 10px 20px;
+  color: var(--muted);
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.back:hover {
+  color: var(--text);
+  text-decoration: underline;
+}
+
