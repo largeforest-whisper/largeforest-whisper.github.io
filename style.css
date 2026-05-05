@@ -1,10 +1,16 @@
 :root {
-  --text: #1f2933;
-  --muted: #6b7280;
-  --bg: #f7f7f4;
+  --text: #111827;
+  --muted: #374151;
+  --bg: #fbfbfa;
   --card: #ffffff;
-  --accent: #2f6f5e;
   --border: #e5e7eb;
+  --shadow: 0 10px 28px rgba(17, 24, 39, 0.08);
+
+  --blue: #2f8edb;
+  --green: #44b67a;
+  --yellow: #f2b84b;
+  --purple: #8b6dd7;
+  --accent: var(--blue);
 }
 
 * {
@@ -13,18 +19,28 @@
 
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, "Hiragino Sans", "Yu Gothic", sans-serif;
+  font-family:
+    "Hiragino Sans",
+    "Yu Gothic",
+    "Noto Sans JP",
+    -apple-system,
+    BlinkMacSystemFont,
+    sans-serif;
   color: var(--text);
-  background: var(--bg);
-  line-height: 1.8;
+  background:
+    radial-gradient(circle at 85% 85%, rgba(47,142,219,0.08), transparent 26%),
+    radial-gradient(circle at 12% 18%, rgba(68,182,122,0.06), transparent 22%),
+    var(--bg);
+  line-height: 1.75;
+  letter-spacing: 0.02em;
 }
 
 header,
 main,
 footer {
-  max-width: 920px;
+  max-width: 1040px;
   margin: 0 auto;
-  padding: 32px 20px;
+  padding: 32px 22px;
 }
 
 .hero {
@@ -33,80 +49,137 @@ footer {
 
 .eyebrow,
 .label {
+  display: inline-block;
   color: var(--accent);
-  font-size: 0.85rem;
-  font-weight: 700;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
+  font-size: 0.92rem;
+  font-weight: 800;
+  letter-spacing: 0.04em;
 }
 
 h1 {
-  font-size: clamp(2rem, 6vw, 4rem);
-  line-height: 1.2;
-  margin: 8px 0 20px;
+  font-size: clamp(2.2rem, 6vw, 4.4rem);
+  line-height: 1.18;
+  margin: 10px 0 20px;
+  font-weight: 900;
+  letter-spacing: 0.03em;
 }
 
 h2 {
-  font-size: 1.6rem;
+  font-size: clamp(1.45rem, 3vw, 2rem);
   line-height: 1.35;
   margin: 8px 0 12px;
+  font-weight: 900;
+}
+
+p {
+  margin: 0.4em 0;
 }
 
 .lead {
-  font-size: 1.1rem;
+  font-size: 1.08rem;
   color: var(--muted);
-  max-width: 680px;
+  max-width: 720px;
+  font-weight: 500;
 }
 
 .grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-  gap: 20px;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 24px;
+}
+
+.card,
+.section {
+  position: relative;
+  background: rgba(255,255,255,0.92);
+  border: 2px solid var(--border);
+  border-radius: 28px;
+  box-shadow: var(--shadow);
 }
 
 .card {
   display: block;
-  padding: 28px;
-  background: var(--card);
-  border: 1px solid var(--border);
-  border-radius: 20px;
+  padding: 30px;
   text-decoration: none;
   color: inherit;
-  box-shadow: 0 8px 24px rgba(0,0,0,0.04);
+}
+
+.card::before,
+.section::before {
+  content: "";
+  position: absolute;
+  inset: 12px auto auto 16px;
+  width: 42px;
+  height: 6px;
+  border-radius: 999px;
+  background: currentColor;
+  opacity: 0.16;
+}
+
+.card:nth-child(1) {
+  border-color: rgba(47,142,219,0.35);
+  color: var(--text);
+}
+
+.card:nth-child(1) .label {
+  color: var(--blue);
+}
+
+.card:nth-child(2) {
+  border-color: rgba(139,109,215,0.35);
+}
+
+.card:nth-child(2) .label {
+  color: var(--purple);
 }
 
 .card:hover {
-  transform: translateY(-2px);
+  transform: translateY(-3px);
   transition: 0.2s ease;
 }
 
 .section {
-  background: var(--card);
-  border: 1px solid var(--border);
-  border-radius: 20px;
-  padding: 28px;
-  margin: 24px 0;
+  padding: 32px;
+  margin: 26px 0;
+}
+
+.section:nth-of-type(1) {
+  border-color: rgba(47,142,219,0.35);
+}
+
+.section:nth-of-type(2) {
+  border-color: rgba(68,182,122,0.35);
+}
+
+.section:nth-of-type(3) {
+  border-color: rgba(242,184,75,0.45);
+}
+
+.section:nth-of-type(4) {
+  border-color: rgba(139,109,215,0.35);
 }
 
 .cta {
   display: inline-block;
-  margin-top: 16px;
-  padding: 12px 22px;
+  margin-top: 18px;
+  padding: 13px 24px;
   background: var(--accent);
   color: #fff;
   text-decoration: none;
   border-radius: 999px;
-  font-weight: 700;
+  font-weight: 800;
+  box-shadow: 0 8px 18px rgba(47,142,219,0.2);
 }
 
 .back {
   display: inline-block;
   margin-top: 24px;
   color: var(--accent);
+  font-weight: 800;
   text-decoration: none;
 }
 
 footer {
-  color: var(--muted);
+  color: #6b7280;
   font-size: 0.9rem;
 }
