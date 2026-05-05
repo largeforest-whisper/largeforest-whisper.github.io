@@ -1,17 +1,14 @@
 :root {
-  /* 画像のトーンに合わせたカラーパレット */
-  --text: #333333;
-  --muted: #666666;
-  --bg: #f8fbff; /* ほんのり青みのある、目に優しい白 */
+  --text: #1f2937;
+  --muted: #6b7280;
+  --bg: #f7f9fc;
   --card: #ffffff;
-  --border: #edf2f7;
-  --shadow: 0 12px 24px rgba(0, 0, 0, 0.04);
-
-  /* 画像の各カテゴリ色を再現 */
-  --blue: #5da9e9;   /* 視覚思考者 */
-  --green: #6bc7a6;  /* 言語思考者 */
-  --orange: #f3a447; /* 身体感覚思考者 */
-  --purple: #a78bfa; /* 非記号的思考者 */
+  --border: #e8edf3;
+  --shadow: 0 6px 24px rgba(99, 120, 160, 0.09);
+  --blue: #3b9de8;
+  --green: #4dbf86;
+  --yellow: #f5a623;
+  --purple: #9b7ee6;
   --accent: var(--blue);
 }
 
@@ -21,157 +18,239 @@
 
 body {
   margin: 0;
-  /* 日本語でも丸みを帯びた印象になるフォント指定 */
-  font-family: 
-    "Hiragino Maru Gothic ProN", 
-    "Yu Gothic UI", 
-    "Noto Sans JP", 
+  font-family:
+    "Hiragino Sans",
+    "Yu Gothic",
+    "Noto Sans JP",
+    -apple-system,
+    BlinkMacSystemFont,
     sans-serif;
   color: var(--text);
-  background-color: var(--bg);
-  /* 画像の背景にある柔らかい装飾をイメージした背景 */
-  background-image: 
-    radial-gradient(circle at 10% 20%, rgba(93, 169, 233, 0.03) 0%, transparent 20%),
-    radial-gradient(circle at 90% 80%, rgba(107, 199, 166, 0.03) 0%, transparent 20%);
-  line-height: 1.8;
-  letter-spacing: 0.03em;
+  background:
+    radial-gradient(ellipse at 90% 10%, rgba(147, 210, 255, 0.18) 0%, transparent 45%),
+    radial-gradient(ellipse at 10% 80%, rgba(100, 220, 170, 0.13) 0%, transparent 40%),
+    radial-gradient(ellipse at 55% 55%, rgba(200, 180, 255, 0.07) 0%, transparent 35%),
+    var(--bg);
+  line-height: 1.85;
+  letter-spacing: 0.025em;
 }
 
 header,
 main,
 footer {
-  max-width: 960px; /* 少し狭めて情報を中央に凝縮 */
+  max-width: 1040px;
   margin: 0 auto;
-  padding: 40px 24px;
+  padding: 40px 28px;
 }
 
 .hero {
-  text-align: center; /* 中央寄せで「見る」サイトの印象を強める */
-  padding-top: 80px;
-  padding-bottom: 60px;
+  padding-top: 88px;
+  padding-bottom: 48px;
 }
 
-/* 英語のサブタイトルなどに使うラベル */
+/* ── ラベル・eyebrow ── */
+.eyebrow,
 .label {
   display: inline-block;
-  color: var(--accent);
-  font-size: 1rem;
+  font-size: 0.78rem;
   font-weight: 700;
-  margin-bottom: 8px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  padding: 4px 12px;
+  border-radius: 999px;
+  margin-bottom: 10px;
+  background: rgba(59, 157, 232, 0.10);
+  color: var(--accent);
 }
 
+/* ── 見出し ── */
 h1 {
-  font-size: clamp(2rem, 5vw, 3.5rem);
-  line-height: 1.2;
-  margin: 10px 0 24px;
-  font-weight: 800;
+  font-size: clamp(2rem, 5.5vw, 3.8rem);
+  line-height: 1.22;
+  margin: 8px 0 22px;
+  font-weight: 900;
+  letter-spacing: 0.01em;
   color: var(--text);
 }
 
 h2 {
-  font-size: 1.8rem;
+  font-size: clamp(1.3rem, 2.8vw, 1.8rem);
   line-height: 1.4;
-  margin: 0 0 12px;
+  margin: 6px 0 10px;
   font-weight: 800;
-  display: flex;
-  align-items: center;
-  gap: 12px;
+  color: var(--text);
 }
 
-/* 説明文を読みやすく */
 p {
-  margin: 0.8em 0;
-  font-size: 1.05rem;
+  margin: 0.45em 0;
 }
 
 .lead {
-  font-size: 1.2rem;
+  font-size: 1.05rem;
   color: var(--muted);
-  margin: 0 auto;
-  max-width: 600px;
+  max-width: 660px;
+  font-weight: 400;
+  line-height: 1.9;
 }
 
+/* ── グリッド ── */
 .grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 32px;
-  margin-top: 40px;
+  grid-template-columns: repeat(auto-fit, minmax(290px, 1fr));
+  gap: 28px;
 }
 
-/* カードのデザインを画像のような「浮き出たパネル」風に */
+/* ── カード ── */
 .card,
 .section {
   position: relative;
-  background: var(--card);
-  border: 3px solid transparent; /* デフォルトは透明 */
-  border-radius: 32px; /* 大きめの角丸 */
-  padding: 40px;
+  background: rgba(255, 255, 255, 0.95);
+  border-radius: 24px;
   box-shadow: var(--shadow);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  border: 1.5px solid var(--border);
+  overflow: hidden;
 }
 
-/* ホバー時の動きを優しく */
-.card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.06);
-}
-
-/* 画像のようにカテゴリごとに色分け */
-.card:nth-child(1), .section:nth-of-type(1) { 
-  border-color: rgba(93, 169, 233, 0.15); 
-}
-.card:nth-child(1) h2 { color: var(--blue); }
-
-.card:nth-child(2), .section:nth-of-type(2) { 
-  border-color: rgba(107, 199, 166, 0.15); 
-}
-.card:nth-child(2) h2 { color: var(--green); }
-
-.card:nth-child(3), .section:nth-of-type(3) { 
-  border-color: rgba(243, 164, 71, 0.15); 
-}
-.card:nth-child(3) h2 { color: var(--orange); }
-
-/* 装飾用のバー（画像のアイコン横の線をイメージ） */
+/* カード上部のカラーバー */
 .card::before,
 .section::before {
   content: "";
   position: absolute;
+  top: 0;
   left: 0;
-  top: 45px;
-  width: 6px;
-  height: 40px;
-  border-radius: 0 10px 10px 0;
+  right: 0;
+  height: 5px;
+  border-radius: 24px 24px 0 0;
   background: currentColor;
-  opacity: 0.8;
+  opacity: 0.55;
 }
 
-/* ボタン（CTA）のデザイン */
+.card {
+  display: block;
+  padding: 34px 32px 30px;
+  text-decoration: none;
+  color: inherit;
+  transition: transform 0.22s ease, box-shadow 0.22s ease;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 16px 40px rgba(99, 120, 160, 0.14);
+}
+
+/* カード個別カラー */
+.card:nth-child(1) {
+  color: var(--blue);
+  border-color: rgba(59, 157, 232, 0.25);
+}
+.card:nth-child(1) .label {
+  background: rgba(59, 157, 232, 0.10);
+  color: var(--blue);
+}
+.card:nth-child(1) h2 {
+  color: var(--text);
+}
+
+.card:nth-child(2) {
+  color: var(--purple);
+  border-color: rgba(155, 126, 230, 0.25);
+}
+.card:nth-child(2) .label {
+  background: rgba(155, 126, 230, 0.10);
+  color: var(--purple);
+}
+.card:nth-child(2) h2 {
+  color: var(--text);
+}
+
+/* ── セクション ── */
+.section {
+  padding: 36px 36px 32px;
+  margin: 28px 0;
+}
+
+.section:nth-of-type(1) {
+  color: var(--blue);
+  border-color: rgba(59, 157, 232, 0.22);
+}
+.section:nth-of-type(2) {
+  color: var(--green);
+  border-color: rgba(77, 191, 134, 0.25);
+}
+.section:nth-of-type(3) {
+  color: var(--yellow);
+  border-color: rgba(245, 166, 35, 0.28);
+}
+.section:nth-of-type(4) {
+  color: var(--purple);
+  border-color: rgba(155, 126, 230, 0.22);
+}
+
+/* section内のラベルは各色で */
+.section:nth-of-type(1) .label {
+  background: rgba(59, 157, 232, 0.10);
+  color: var(--blue);
+}
+.section:nth-of-type(2) .label {
+  background: rgba(77, 191, 134, 0.10);
+  color: var(--green);
+}
+.section:nth-of-type(3) .label {
+  background: rgba(245, 166, 35, 0.10);
+  color: var(--yellow);
+}
+.section:nth-of-type(4) .label {
+  background: rgba(155, 126, 230, 0.10);
+  color: var(--purple);
+}
+
+/* section内のh2はテキスト色に戻す */
+.section h2 {
+  color: var(--text);
+}
+
+/* ── CTA ── */
 .cta {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  margin-top: 24px;
-  padding: 16px 36px;
+  display: inline-block;
+  margin-top: 22px;
+  padding: 13px 28px;
   background: var(--accent);
   color: #fff;
   text-decoration: none;
-  border-radius: 50px;
-  font-weight: 800;
-  font-size: 1.1rem;
-  box-shadow: 0 8px 20px rgba(93, 169, 233, 0.3);
-  transition: all 0.2s ease;
+  border-radius: 999px;
+  font-weight: 700;
+  font-size: 0.95rem;
+  letter-spacing: 0.03em;
+  transition: background 0.2s ease, transform 0.15s ease;
 }
 
 .cta:hover {
-  filter: brightness(1.05);
-  transform: scale(1.02);
+  background: #2a8ad4;
+  transform: translateY(-2px);
 }
 
-footer {
-  text-align: center;
-  margin-top: 80px;
-  color: #a0aec0;
+/* ── 戻るリンク ── */
+.back {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  margin-top: 28px;
+  color: var(--accent);
+  font-weight: 700;
+  text-decoration: none;
   font-size: 0.95rem;
+  transition: opacity 0.15s;
+}
+
+.back:hover {
+  opacity: 0.7;
+}
+
+/* ── フッター ── */
+footer {
+  color: var(--muted);
+  font-size: 0.88rem;
   border-top: 1px solid var(--border);
+  padding-top: 28px;
+  margin-top: 24px;
 }
