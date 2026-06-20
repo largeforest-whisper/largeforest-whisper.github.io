@@ -63,11 +63,12 @@ h1 {
 }
 
 /* CTA Button */
+/* --- 最上部のボタン (24行目の cta-main) --- */
 .cta-main {
   display: inline-block;
   padding: 20px 48px;
-  background-color: var(--primary);
-  color: var(--white);
+  background-color: #2c3e50 !important; /* 直接 紺色を指定 */
+  color: #ffffff !important;           /* 文字は白 */
   text-decoration: none;
   border-radius: 100px;
   font-weight: 600;
@@ -158,14 +159,16 @@ h1 {
   padding: 60px 0 100px;
 }
 
+/* --- 下部のメインの囲い (offer-box) --- */
 .offer-box {
-  background-color: var(--primary);
-  color: var(--white);
+  background-color: #2c3e50 !important; /* 直接 紺色を指定 */
+  color: #ffffff !important;           /* 中の文字を白にする */
   padding: 60px 40px;
   border-radius: 30px;
   text-align: center;
   position: relative;
   overflow: hidden;
+  margin: 40px 0; /* デスクトップで上下に余白を作る */
 }
 
 .badge {
@@ -205,11 +208,12 @@ h1 {
   font-weight: 800;
 }
 
+/* 囲いの中のボタンも白にする (cta-bold) */
 .cta-bold {
   display: inline-block;
   padding: 22px 60px;
-  background-color: var(--white);
-  color: var(--primary);
+  background-color: #ffffff !important; /* 紺の背景に映える白 */
+  color: #2c3e50 !important;           /* 文字は紺 */
   text-decoration: none;
   border-radius: 100px;
   font-weight: 800;
