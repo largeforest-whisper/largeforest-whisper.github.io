@@ -1,235 +1,253 @@
 :root {
-  /* Gemini */
-  /* 画像のトーンに合わせたカラーパレット */
-  --text: #333333;
-  --muted: #666666;
-  --bg: #f8fbff; /* ほんのり青みのある、目に優しい白 */
-  --card: #ffffff;
-  --border: #edf2f7;
-  --shadow: 0 12px 24px rgba(0, 0, 0, 0.04);
-
-  /* 画像の各カテゴリ色を再現 */
-  --blue: #5da9e9;   /* 視覚思考者 */
-  --green: #6bc7a6;  /* 言語思考者 */
-  --orange: #f3a447; /* 身体感覚思考者 */
-  --purple: #a78bfa; /* 非記号的思考者 */
-  --accent: var(--blue);
+  --primary: #2c3e50; /* 深みのあるネイビー（信頼感） */
+  --accent: #5da9e9;  /* 爽やかなブルー */
+  --bg-soft: #fcfdfd;
+  --text-main: #333333;
+  --text-muted: #666666;
+  --white: #ffffff;
+  --shadow-soft: 0 20px 40px rgba(0,0,0,0.05);
 }
 
 * {
   box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 }
 
 body {
-  margin: 0;
-  /* 日本語でも丸みを帯びた印象になるフォント指定 */
-  font-family: 
-    "Hiragino Maru Gothic ProN", 
-    "Yu Gothic UI", 
-    "Noto Sans JP", 
-    sans-serif;
-  color: var(--text);
-  background-color: var(--bg);
-  /* 画像の背景にある柔らかい装飾をイメージした背景 */
-  background-image: 
-    radial-gradient(circle at 10% 20%, rgba(93, 169, 233, 0.03) 0%, transparent 20%),
-    radial-gradient(circle at 90% 80%, rgba(107, 199, 166, 0.03) 0%, transparent 20%);
+  font-family: "Outfit", "Noto Sans JP", sans-serif;
+  color: var(--text-main);
+  background-color: var(--bg-soft);
   line-height: 1.8;
-  letter-spacing: 0.03em;
+  letter-spacing: 0.04em;
+  word-break: break-word;
 }
 
-header,
-main,
-footer {
-  max-width: 960px; /* 少し狭めて情報を中央に凝縮 */
+.container {
+  max-width: 1000px;
   margin: 0 auto;
-  padding: 40px 24px;
+  padding: 0 24px;
 }
 
+/* Hero Section */
 .hero {
-  text-align: center; /* 中央寄せで「見る」サイトの印象を強める */
-  padding-top: 80px;
-  padding-bottom: 60px;
+  padding: 120px 0 80px;
+  text-align: center;
 }
 
-/* 英語のサブタイトルなどに使うラベル */
-.label {
-  display: inline-block;
+.eyebrow {
+  font-weight: 600;
+  letter-spacing: 0.3em;
   color: var(--accent);
-  font-size: 1rem;
-  font-weight: 700;
-  margin-bottom: 8px;
+  margin-bottom: 20px;
+  font-size: 0.9rem;
 }
 
 h1 {
-  font-size: clamp(2rem, 5vw, 3.5rem);
-  line-height: 1.2;
-  margin: 10px 0 24px;
-  font-weight: 800;
-  color: var(--text);
-}
-
-h2 {
-  font-size: 1.8rem;
+  font-family: "Noto Serif JP", serif; /* 明朝体で高級感を演出 */
+  font-size: clamp(2rem, 5vw, 3rem);
   line-height: 1.4;
-  margin: 0 0 12px;
-  font-weight: 800;
-  display: flex;
-  align-items: center;
-  gap: 12px;
+  margin-bottom: 30px;
+  font-weight: 700;
 }
 
-/* 説明文を読みやすく */
-p {
-  margin: 0.8em 0;
-  font-size: 1.05rem;
+.highlight {
+  background: linear-gradient(transparent 70%, rgba(93, 169, 233, 0.2) 70%);
 }
 
 .lead {
-  font-size: 1.2rem;
-  color: var(--muted);
-  margin: 0 auto;
-  max-width: 600px;
+  font-size: 1.1rem;
+  color: var(--text-muted);
+  max-width: 700px;
+  margin: 0 auto 40px;
 }
 
+/* CTA Button */
+.cta-main {
+  display: inline-block;
+  padding: 20px 48px;
+  background-color: var(--primary);
+  color: var(--white);
+  text-decoration: none;
+  border-radius: 100px;
+  font-weight: 600;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  box-shadow: 0 10px 25px rgba(44, 62, 80, 0.2);
+}
+
+.cta-main:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 15px 30px rgba(44, 62, 80, 0.3);
+}
+
+/* Concept Section */
+.concept {
+  padding: 80px 0;
+  background-color: #f8fbff;
+  text-align: center;
+}
+
+.sub-title {
+  display: block;
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: #999;
+  text-transform: uppercase;
+  margin-bottom: 10px;
+}
+
+.concept h2 {
+  font-family: "Noto Serif JP", serif;
+  margin-bottom: 24px;
+  font-size: 1.8rem;
+}
+
+/* Grid Cards */
 .grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 32px;
-  margin-top: 40px;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 40px;
+  padding: 80px 0;
 }
 
-/* カードのデザインを画像のような「浮き出たパネル」風に */
-.card,
-.section {
-  position: relative;
-  background: var(--card);
-  border: 3px solid transparent; /* デフォルトは透明 */
-  border-radius: 32px; /* 大きめの角丸 */
-  padding: 60px 48px; /* 上下を60px、左右を48pxに広げる */
-  box-shadow: var(--shadow);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-
-   /* セクション同士の間に隙間を作るために追加 */
-  margin-bottom: 40px; 
-}
-
-/* ホバー時の動きを優しく */
-.card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.06);
-}
-
-/* 画像のようにカテゴリごとに色分け */
-.card:nth-child(1), .section:nth-of-type(1) { 
-  border-color: rgba(93, 169, 233, 0.15); 
-}
-.card:nth-child(1) h2 { color: var(--blue); }
-
-.card:nth-child(2), .section:nth-of-type(2) { 
-  border-color: rgba(107, 199, 166, 0.15); 
-}
-.card:nth-child(2) h2 { color: var(--green); }
-
-.card:nth-child(3), .section:nth-of-type(3) { 
-  border-color: rgba(243, 164, 71, 0.15); 
-}
-.card:nth-child(3) h2 { color: var(--orange); }
-
-/* 装飾用のバー（画像のアイコン横の線をイメージ） */
-.card::before,
-.section::before {
-  content: "";
-  position: absolute;
-  left: 0;
-  top: 45px;
-  width: 6px;
-  height: 40px;
-  border-radius: 0 10px 10px 0;
-  background: currentColor;
-  opacity: 0.8;
-}
-
-/* ボタン（CTA）のデザイン */
-.cta {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  margin-top: 24px;
-  padding: 16px 36px;
-  background: var(--accent);
-  color: #fff;
-  text-decoration: none;
-  border-radius: 50px;
-  font-weight: 800;
-  font-size: 1.1rem;
-  box-shadow: 0 8px 20px rgba(93, 169, 233, 0.3);
-  transition: all 0.2s ease;
-}
-
-.cta:hover {
-  filter: brightness(1.05);
-  transform: scale(1.02);
-}
-
-
-/* 全てのリンクから下線を消し、色は親要素に合わせる */
-a {
+.card {
+  background: var(--white);
+  padding: 50px 40px;
+  border-radius: 20px;
   text-decoration: none;
   color: inherit;
-  transition: opacity 0.2s ease;
-  display: inline-block; /* 念のため */
+  box-shadow: var(--shadow-soft);
+  transition: all 0.4s ease;
+  border: 1px solid rgba(0,0,0,0.03);
+  position: relative;
 }
 
-/* ホバー時も下線を出さない */
-a:hover, a:focus, a:active {
+.card:hover {
+  transform: translateY(-10px);
+  border-color: var(--accent);
+}
+
+.card .label {
+  font-size: 0.8rem;
+  color: var(--accent);
+  font-weight: 600;
+  margin-bottom: 15px;
+}
+
+.card h2 {
+  font-family: "Noto Serif JP", serif;
+  font-size: 1.5rem;
+  margin-bottom: 15px;
+}
+
+.card-desc {
+  font-size: 0.95rem;
+  color: var(--text-muted);
+  margin-bottom: 30px;
+}
+
+.more {
+  font-size: 0.85rem;
+  font-weight: 600;
+  border-bottom: 2px solid var(--accent);
+  padding-bottom: 2px;
+}
+
+/* Program Offer (Main Conversion) */
+.program-offer {
+  padding: 60px 0 100px;
+}
+
+.offer-box {
+  background-color: var(--primary);
+  color: var(--white);
+  padding: 60px 40px;
+  border-radius: 30px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.badge {
+  display: inline-block;
+  background: var(--accent);
+  padding: 4px 16px;
+  border-radius: 4px;
+  font-size: 0.8rem;
+  font-weight: 700;
+  margin-bottom: 20px;
+}
+
+.offer-box h2 {
+  font-family: "Noto Serif JP", serif;
+  font-size: 2rem;
+  margin-bottom: 20px;
+}
+
+.program-features {
+  list-style: none;
+  text-align: left;
+  max-width: 450px;
+  margin: 30px auto;
+}
+
+.program-features li {
+  margin-bottom: 12px;
+  padding-left: 28px;
+  position: relative;
+}
+
+.program-features li::before {
+  content: "✓";
+  position: absolute;
+  left: 0;
+  color: var(--accent);
+  font-weight: 800;
+}
+
+.cta-bold {
+  display: inline-block;
+  padding: 22px 60px;
+  background-color: var(--white);
+  color: var(--primary);
   text-decoration: none;
-  outline: none;
+  border-radius: 100px;
+  font-weight: 800;
+  font-size: 1.2rem;
+  margin-top: 20px;
 }
 
-/* カード要素としてのaタグを確実に制御 */
-.card {
-  text-decoration: none;
-  display: block; /* カード全体をリンクにするため */
+.note {
+  font-size: 0.8rem;
+  opacity: 0.7;
+  margin-top: 15px;
 }
 
-
-/* さらに見栄えを良くするためのヒント */
-
-.stack {
-  display: flex;
-  flex-direction: column;
-  gap: 48px; /* これだけでセクション間の隙間が一律で設定できます */
+/* Footer & Personal */
+.personal-session {
+  padding: 80px 0;
+  border-top: 1px solid #eee;
 }
-
 
 footer {
+  padding: 60px 0;
+  background: #f1f5f9;
   text-align: center;
-  margin-top: 80px;
-  color: #a0aec0;
-  font-size: 0.95rem;
-  border-top: 1px solid var(--border);
 }
 
-/* --- CSSの末尾などに追記 --- */
-
-/* main直下のsectionに間隔を持たせる */
-main > .section:last-of-type {
-  margin-bottom: 60px; /* 最後のセクションの下だけ少し広めに */
+.donation-text {
+  font-size: 0.9rem;
+  color: var(--text-muted);
+  margin-bottom: 20px;
 }
 
-/* 「戻る」ボタンのデザイン調整 */
-.back {
-  display: inline-block;
-  margin-top: 20px;
-  padding: 10px 20px;
-  color: var(--muted);
-  text-decoration: none;
-  font-weight: bold;
+@media (max-width: 768px) {
+  h1 { font-size: 2rem; }
+  .grid { grid-template-columns: 1fr; }
+  .offer-box { padding: 40px 20px; }
 }
 
-.back:hover {
-  color: var(--text);
-  text-decoration: underline;
-}
+
+
+
 
